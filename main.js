@@ -43,29 +43,28 @@ const comprarProductos = (listaDeProductos) =>{
 
         const prodPorNombre = productos.find(producto => producto.nombre.toLowerCase() === prodNombre.toLowerCase());
         const prodPorId = productos.find(producto => producto.id === prodNombre);
-        const prodIndex = ()=> {
-            switch (prodNombre){
-                case 'fideos':
-                    return prodIndex = 0;
-                case 'salsa':
-                    return prodIndex = 1;
-                case 'queso rallado':
-                    return prodIndex = 2;
-                case 'pan':
-                    return prodIndex = 3;
-                case 'aceite':
-                    return prodIndex = 4;
-                case 'chocolate':
-                    return prodIndex = 5;
-                default: ('Alguno de los datos ingresados no es correcto')
-                
-            } 
-            
-        }
-        productos.indexOf(prodNombre.toLowerCase());
-        
+           
         if (prodPorNombre || prodPorId) {
-            verificarStock(prodIndex, prodCant)
+            const prodIndex = ()=> {
+                switch (prodNombre){
+                    case 'fideos':
+                        return prodIndex = 0;
+                    case 'salsa':
+                        return prodIndex = 1;
+                    case 'queso rallado':
+                        return prodIndex = 2;
+                    case 'pan':
+                        return prodIndex = 3;
+                    case 'aceite':
+                        return prodIndex = 4;
+                    case 'chocolate':
+                        return prodIndex = 5;
+                    default: ('Alguno de los datos ingresados no es correcto')
+                    
+                } 
+                
+            }
+            verificarStock(prodIndex, prodCant);
         } else {
             alert('El producto no se encuentra en el catálogo.')
         }
@@ -77,6 +76,12 @@ const comprarProductos = (listaDeProductos) =>{
 }
 
 
+const verificarStock = (index, cantidad)=>{
+    if(cantidad<=productos[index].cant){
+    agregarAlCarrito(productos[index].nombre,productos[index].id, cantidad)} 
+    else {
+    alert(`Solo quedan ${productos[index].cant} unidades del producto ${productos[index].nombre}`)}
+}
 const agregarAlCarrito = (producto, productoId, cantidad) =>{
     const productoRepetido = carrito.find(producto => producto.id === productoId)
     if (!productoRepetido) {
@@ -85,13 +90,6 @@ const agregarAlCarrito = (producto, productoId, cantidad) =>{
     } else {
         productoRepetido.cant += cantidad
     }
-}
-
-const verificarStock = (index, cantidad)=>{
-    if(cantidad<=productos[index].cant){
-    agregarAlCarrito(productos[index],productos[index].id, cantidad)} 
-    else {
-    alert(`Solo quedan ${productos[index].cant} unidades del producto ${productos[index].nombre}`)}
 }
 
 const confirmarCompra = () => {
