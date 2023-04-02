@@ -23,7 +23,7 @@ const productos = [
 },
 {
     id: 3,
-    nombre: "Queso rallado",
+    nombre: "Queso",
     tipo: "queso",
     descripción: "queso rallado",
     precio: 600,
@@ -45,9 +45,9 @@ const productos = [
 },
 {
     id: 5,
-    nombre: "Aceite de oliva",
+    nombre: "Aceite",
     tipo: "aceite",
-    descripción: "Aceite de oliva",
+    descripción: "Aceite",
     precio: 900,
     pesoEnGrs: 680,
     cant: 10
