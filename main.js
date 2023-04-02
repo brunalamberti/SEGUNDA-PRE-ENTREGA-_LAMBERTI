@@ -64,7 +64,7 @@ const comprarProductos = (listaDeProductos) =>{
 const verificarStock = (index, cantidad)=>{
     if(cantidad<=productos[index].cant) {
         agregarAlCarrito(productos[index].nombre,productos[index].id, cantidad);
-        productos[index].cant--; 
+        productos[index].cant -= cantidad; 
     }else {
       alert(`Solo quedan ${productos[index].cant} unidades del producto ${productos[index].nombre}`)}
     }
