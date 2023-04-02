@@ -77,11 +77,9 @@ const comprarProductos = (listaDeProductos) =>{
 
 
 const verificarStock = (index, cantidad)=>{
-    if(cantidad<=productos[index].cant){
-    agregarAlCarrito(productos[index].nombre,productos[index].id, cantidad)} 
-    else {
-    alert(`Solo quedan ${productos[index].cant} unidades del producto ${productos[index].nombre}`)}
-}
+   ((cantidad<=productos[index].cant)? agregarAlCarrito(productos[index].nombre,productos[index].id, cantidad):
+    alert(`Solo quedan ${productos[index].cant} unidades del producto ${productos[index].nombre}`))}
+
 const agregarAlCarrito = (producto, productoId, cantidad) =>{
     const productoRepetido = carrito.find(producto => producto.id === productoId)
     if (!productoRepetido) {
