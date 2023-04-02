@@ -43,29 +43,13 @@ const comprarProductos = (listaDeProductos) =>{
 
         const prodPorNombre = productos.find(producto => producto.nombre.toLowerCase() === prodNombre.toLowerCase());
         const prodPorId = productos.find(producto => producto.id === prodNombre);
-           
+    
+        
         if (prodPorNombre || prodPorId) {
-            const prodIndex = ()=> {
-                switch (prodNombre){
-                    case 'fideos':
-                        return prodIndex = 0;
-                    case 'salsa':
-                        return prodIndex = 1;
-                    case 'queso rallado':
-                        return prodIndex = 2;
-                    case 'pan':
-                        return prodIndex = 3;
-                    case 'aceite':
-                        return prodIndex = 4;
-                    case 'chocolate':
-                        return prodIndex = 5;
-                    default: ('Alguno de los datos ingresados no es correcto')
-                    
-                } 
-                
-            }
+            const prodIndex  = productos.findIndex(prodPorNombre(),prodNombre);
             verificarStock(prodIndex, prodCant);
-        } else {
+            }
+         else {
             alert('El producto no se encuentra en el catálogo.')
         }
 
@@ -73,12 +57,17 @@ const comprarProductos = (listaDeProductos) =>{
     } while (otroProducto)
 
     confirmarCompra()
+    return prodIndex;
 }
 
 
 const verificarStock = (index, cantidad)=>{
-   ((cantidad<=productos[index].cant)? agregarAlCarrito(productos[index].nombre,productos[index].id, cantidad):
-    alert(`Solo quedan ${productos[index].cant} unidades del producto ${productos[index].nombre}`))}
+    if(cantidad<=productos[index].cant) {
+        agregarAlCarrito(productos[index].nombre,productos[index].id, cantidad);
+        productos[index].cant--; 
+    }else {
+      alert(`Solo quedan ${productos[index].cant} unidades del producto ${productos[index].nombre}`)}
+    }
 
 const agregarAlCarrito = (producto, productoId, cantidad) =>{
     const productoRepetido = carrito.find(producto => producto.id === productoId)
