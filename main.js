@@ -1,17 +1,11 @@
-const carrito = [];
-
 alert("Bienvenidos a mi tienda online");
+
+const carrito = [];
 
 const inicioNav = () =>{
     const ordenProds = confirm('¿Querés ordenar los productos del más barato al mas caro?')
-
-    if (ordenProds) {
-        ordenarPrecioAsc()
-    } else {
-        ordenarPrecioAleat()
+    ordenProds? ordenarPrecioAsc(): ordenarPrecioAleat();
     }
-}
-
 
 const ordenarPrecioAsc = () =>{
     productos.sort((a,b)=> a.precio - b.precio);
@@ -42,11 +36,18 @@ const comprarProductos = (listaDeProductos) =>{
         prodCant = parseInt(prompt('¿Cuántos querés comprar?'));
 
         const prodPorNombre = productos.find(producto => producto.nombre.toLowerCase() === prodNombre.toLowerCase());
+    //Esta línea no está funcionando tampoco; no toma los n° como inputs válidos, pero no es lo que más me importa.   
         const prodPorId = productos.find(producto => producto.id === prodNombre);
-    
-        
+    /*Entiendo que el problema inicia acá porque se interrumpe cuando la condición se cumple. 
+    Si escribo cualquier cosa, llega a la línea 47. No entiendo qué estoy haciendo mal cuando quiero obtener el index
+    y validar y actualizar el stock.
+    Probé con un switch y solo tendría sentido del todo para el sort de precio ascendente, pero no para el aleatorio. 
+    Más allá de que podría poner un orden ascendente y uno descendente y ajustar dos switch diferentes, no es escalable, 
+    y querría ver cómo se hace de esta manera.
+    Por otro lado, usando switch llegaba hasta el final, pero hay algo mal en el medio también porque 
+    en todos los alert me quedaba NaN y undefined. */
         if (prodPorNombre || prodPorId) {
-            const prodIndex  = productos.findIndex(prodPorNombre(),prodNombre);
+            const prodIndex  = productos.findIndex((producto)=> producto.nombre === prodNombre);
             verificarStock(prodIndex, prodCant);
             }
          else {
@@ -57,14 +58,13 @@ const comprarProductos = (listaDeProductos) =>{
     } while (otroProducto)
 
     confirmarCompra()
-    return prodIndex;
 }
 
 
 const verificarStock = (index, cantidad)=>{
     if(cantidad<=productos[index].cant) {
         agregarAlCarrito(productos[index].nombre,productos[index].id, cantidad);
-        productos[index].cant -= cantidad; 
+        productos[index] 
     }else {
       alert(`Solo quedan ${productos[index].cant} unidades del producto ${productos[index].nombre}`)}
     }
@@ -72,10 +72,10 @@ const verificarStock = (index, cantidad)=>{
 const agregarAlCarrito = (producto, productoId, cantidad) =>{
     const productoRepetido = carrito.find(producto => producto.id === productoId)
     if (!productoRepetido) {
-        producto.cant += cantidad
-        carrito.push(producto)
+        producto.cant += cantidad;
+        carrito.push(producto);
     } else {
-        productoRepetido.cant += cantidad
+        productoRepetido.cant += cantidad;
     }
 }
 
@@ -122,18 +122,4 @@ const finalizarCompra = (listaCarrito) => {
 };
 
 inicioNav();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
