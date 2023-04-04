@@ -58,7 +58,7 @@ const verificarStock = (lista, nombre, cantidad)=>{
             stock = true;
             element.cant -= cantidad; 
         } else {
-            alert(`No hay suficiente stock`)
+            alert(`No hay suficiente stock: quedan ${element.cant} unidades del producto ${element.nombre}`)
             inicioNav();
         }
         }) 
