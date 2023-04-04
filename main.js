@@ -56,28 +56,6 @@ const comprarProductos = (listaDeProductos) =>{
 }
 
 
-// const verificarStock = (lista, nombre, cantidad)=>{
-//     stock = false;
-//     if (lista.nombre.cant>= cantidad){
-//         stock = true;
-//         lista.nombre.cant -= cantidad;
-//     }else {
-//                 alert(`No hay suficiente stock: quedan ${productos.nombre.cant} unidades del producto ${productos.nombre}`);
-//                 inicioNav();
-//              }
-//     // lista.forEach(element =>{
-//     //     if (element.nombre === nombre && element.cant ){
-//     //         stock = true;
-//     //         element.cant -= cantidad; 
-//     //     } else {
-//     //         alert(`No hay suficiente stock: quedan ${element.cant} unidades del producto ${element.nombre}`);
-//     //         inicioNav();
-//     //     }
-//     //     }) 
-    
-//       return stock;
-//     }
-
 const agregarAlCarrito = (producto, productoId, cantidad) =>{
     const productoRepetido = carrito.find(producto => producto.id === productoId)
     if (!productoRepetido) {
