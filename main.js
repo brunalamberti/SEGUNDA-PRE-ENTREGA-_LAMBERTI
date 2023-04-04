@@ -36,19 +36,9 @@ const comprarProductos = (listaDeProductos) =>{
         prodCant = parseInt(prompt('¿Cuántos querés comprar?'));
 
         const prodPorNombre = productos.find(producto => producto.nombre.toLowerCase() === prodNombre.toLowerCase());
-    //Esta línea no está funcionando tampoco; no toma los n° como inputs válidos, pero no es lo que más me importa.   
-        const prodPorId = productos.find(producto => producto.id === prodNombre);
-    /*Entiendo que el problema inicia acá porque se interrumpe cuando la condición se cumple. 
-    Si escribo cualquier cosa, llega a la línea 47. No entiendo qué estoy haciendo mal cuando quiero obtener el index
-    y validar y actualizar el stock.
-    Probé con un switch y solo tendría sentido del todo para el sort de precio ascendente, pero no para el aleatorio. 
-    Más allá de que podría poner un orden ascendente y uno descendente y ajustar dos switch diferentes, no es escalable, 
-    y querría ver cómo se hace de esta manera.
-    Por otro lado, usando switch llegaba hasta el final, pero hay algo mal en el medio también porque 
-    en todos los alert me quedaba NaN y undefined. */
-        if (prodPorNombre || prodPorId) {
-            const prodIndex  = productos.findIndex((producto)=> producto.nombre === prodNombre);
-            verificarStock(prodIndex, prodCant);
+
+        if (prodNombre) {
+            verificarStock(productos, prodNombre, prodCant);
             }
          else {
             alert('El producto no se encuentra en el catálogo.')
@@ -61,12 +51,17 @@ const comprarProductos = (listaDeProductos) =>{
 }
 
 
-const verificarStock = (index, cantidad)=>{
-    if(cantidad<=productos[index].cant) {
-        agregarAlCarrito(productos[index].nombre,productos[index].id, cantidad);
-        productos[index] 
-    }else {
-      alert(`Solo quedan ${productos[index].cant} unidades del producto ${productos[index].nombre}`)}
+const verificarStock = (lista, nombre, cantidad)=>{
+    stock = false;
+    lista.forEach(element =>{
+        if (element.nombre === nombre && element.cant >= cantidad){
+            stock = true;
+            element.cant -= cantidad; 
+        } else {
+            alert(`Solo quedan ${lista.nombre.cant} unidades del producto ${lista.nombre}`)}
+        }) 
+    
+      return stock;
     }
 
 const agregarAlCarrito = (producto, productoId, cantidad) =>{
