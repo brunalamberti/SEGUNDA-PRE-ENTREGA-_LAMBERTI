@@ -38,9 +38,9 @@ const comprarProductos = (listaDeProductos) =>{
         const prodPorNombre = productos.find(producto => producto.nombre.toLowerCase() === prodNombre.toLowerCase());
 
             if (prodPorNombre) {
-            if (prodPorNombre.cant >= prodCant) {
-                agregarAlCarrito(prodPorNombre)
-                prodPorNombre.cant -= prodCant;
+            if (prodPorNombre.stock >= prodCant) {
+                agregarAlCarrito(prodPorNombre, prodPorNombre.id, prodCant)
+                prodPorNombre.stock-= prodCant;
             } else {
                 alert('No hay suficiente stock');
             }
@@ -86,8 +86,8 @@ const confirmarCompra = () => {
 const eliminarProductoCarrito = (productoNombre) => {
     carrito.forEach((producto, index) => {
         if (producto.nombre.toLowerCase() === productoNombre.toLowerCase()) {
-            if (producto.cantidad > 1) {
-                producto.cantidad--
+            if (producto.cant > 1) {
+                producto.cant--
             } else {
                 carrito.splice(index, 1)
             }
@@ -97,8 +97,8 @@ const eliminarProductoCarrito = (productoNombre) => {
 };
 
 const finalizarCompra = (listaCarrito) => {
-    const cantidadTotal = carrito.reduce((acc, item) => acc + item.cantidad, 0)
-    const precioTotal = carrito.reduce((acc, item) => acc + (item.precio * item.cantidad), 0)
+    const cantidadTotal = carrito.reduce((acc, item) => acc + item.cant, 0)
+    const precioTotal = carrito.reduce((acc, item) => acc + (item.precio * item.cant), 0)
 
     alert('Detalle de su compra:'
         +'\n\n'+listaCarrito.join('\n')

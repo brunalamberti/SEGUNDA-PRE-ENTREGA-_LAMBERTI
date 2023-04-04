@@ -6,7 +6,8 @@ const productos = [
     descripción: "fideos secos",
     precio: 200,
     pesoEnGrs: 500,
-    cant: 10
+    cant: 0,
+    stock: 10
 
 
 },
@@ -17,8 +18,8 @@ const productos = [
     descripción: "salsa de tomate lista",
     precio: 250,
     pesoEnGrs: 300,
-    cant: 10
-
+    cant: 0,
+    stock: 10
 
 },
 {
@@ -28,8 +29,8 @@ const productos = [
     descripción: "queso rallado",
     precio: 600,
     pesoEnGrs: 150,
-    cant: 10
-
+    cant: 0,
+    stock: 10
 
 },
 {
@@ -39,8 +40,8 @@ const productos = [
     descripción: "baguette",
     precio: 120,
     pesoEnGrs: 250,
-    cant: 10
-
+    cant: 0,
+    stock: 10
 
 },
 {
@@ -50,8 +51,8 @@ const productos = [
     descripción: "Aceite",
     precio: 900,
     pesoEnGrs: 680,
-    cant: 10
-
+    cant: 0,
+    stock: 10
 
 },
 {
@@ -61,8 +62,8 @@ const productos = [
     descripción: "chocolate amargo",
     precio: 400,
     pesoEnGrs: 120,
-    cant: 10
-
+    cant: 0,
+    stock: 10
 
 },
 ];
