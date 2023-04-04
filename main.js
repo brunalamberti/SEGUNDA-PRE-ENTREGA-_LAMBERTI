@@ -37,8 +37,8 @@ const comprarProductos = (listaDeProductos) =>{
 
         const prodPorNombre = productos.find(producto => producto.nombre.toLowerCase() === prodNombre.toLowerCase());
 
-        if (prodNombre) {
-            verificarStock(productos, prodNombre, prodCant);
+        if (prodPorNombre) {
+            verificarStock(productos, prodPorNombre, prodCant);
             }
          else {
             alert('El producto no se encuentra en el catálogo.')
@@ -58,7 +58,9 @@ const verificarStock = (lista, nombre, cantidad)=>{
             stock = true;
             element.cant -= cantidad; 
         } else {
-            alert(`Solo quedan ${lista.nombre.cant} unidades del producto ${lista.nombre}`)}
+            alert(`No hay suficiente stock`)
+            inicioNav();
+        }
         }) 
     
       return stock;
