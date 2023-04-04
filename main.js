@@ -48,20 +48,28 @@ const comprarProductos = (listaDeProductos) =>{
     } while (otroProducto)
 
     confirmarCompra()
+   
 }
 
 
 const verificarStock = (lista, nombre, cantidad)=>{
     stock = false;
-    lista.forEach(element =>{
-        if (element.nombre === nombre && element.cant >= cantidad){
-            stock = true;
-            element.cant -= cantidad; 
-        } else {
-            alert(`No hay suficiente stock: quedan ${element.cant} unidades del producto ${element.nombre}`)
-            inicioNav();
-        }
-        }) 
+    if (lista.nombre.cant>= cantidad){
+        stock = true;
+        lista.nombre.cant -= cantidad;
+    }else {
+                alert(`No hay suficiente stock: quedan ${productos.nombre.cant} unidades del producto ${productos.nombre}`);
+                inicioNav();
+             }
+    // lista.forEach(element =>{
+    //     if (element.nombre === nombre && element.cant ){
+    //         stock = true;
+    //         element.cant -= cantidad; 
+    //     } else {
+    //         alert(`No hay suficiente stock: quedan ${element.cant} unidades del producto ${element.nombre}`);
+    //         inicioNav();
+    //     }
+    //     }) 
     
       return stock;
     }
