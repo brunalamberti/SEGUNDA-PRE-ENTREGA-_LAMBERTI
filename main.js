@@ -38,7 +38,7 @@ const comprarProductos = (listaDeProductos) =>{
         const prodPorNombre = productos.find(producto => producto.nombre.toLowerCase() === prodNombre.toLowerCase());
 
             if (prodPorNombre) {
-            if (prodPorNombre.cant >= cantidad ) {
+            if (prodPorNombre.cant >= prodCant ) {
                 agregarAlCarrito(prodPorNombre)
             } else {
                 alert('No hay suficiente stock');
